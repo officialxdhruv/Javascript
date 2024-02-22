@@ -42,11 +42,3 @@ const winner = () => {
     }
   }
 };
-{{
-  console.log("hello");
-    
-}}// let i = 0;
-// for (const iterator of box) {
-//     box[i].innerText=   i; //?
-//     i++;
-// }
