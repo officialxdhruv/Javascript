@@ -2,7 +2,7 @@ const box = document.querySelectorAll(".box");
 const resetbutt = document.querySelector("#resetButt");
 const msgcont = document.querySelector(".msgCont");
 const msg = document.querySelector("#msg");
-const newButt = document.querySelector("#new-button");
+const whoTurn = document.querySelector(".who");
 let turnO = true; //player x & player o
 const win = [
   [0, 1, 2],
@@ -15,16 +15,18 @@ const win = [
   [2, 4, 6],
 ];
 
-//*check whoses turn or run function check winner
+//*check whoses turn and change text in the box or run function check winner
 box.forEach((boxes) => {
   boxes.addEventListener("click", () => {
-    // console.log("box was click");
     if (turnO) {
       boxes.innerText = "O";
       turnO = false;
+      whoTurn.classList.remove("hidefor");
+      whoTurn.innerText = "x";
     } else {
       boxes.innerText = "X";
       turnO = true;
+      whoTurn.innerText = "o";
     }
     boxes.disabled = true;
 
@@ -54,7 +56,8 @@ const checkWinner = () => {
 };
 //*show winner
 const showwinner = (post1) => {
-  msg.innerText = `winner is ${post1}`;
+  msg.innerText = `Winner is ${post1}`;
+  whoTurn.classList.add("hidefor");
   msgcont.classList.remove("hide");
   disableButt();
 };
@@ -63,21 +66,21 @@ const restGame = () => {
   turnO = true;
   enableButt();
   msgcont.classList.add("hide");
+  whoTurn.classList.add("hidefor");
 };
 resetbutt.addEventListener("click", restGame);
 
-//*disble buttons after game is complete
+//*disble box after game is complete
 const disableButt = () => {
   for (const disable of box) {
     disable.disabled = true;
   }
 };
 
+//*a fun for enalble buttons
 const enableButt = () => {
   for (const boxes of box) {
     boxes.disabled = false;
     boxes.innerText = "";
   }
 };
-//*new game butt
-newButt.addEventListener("click", restGame);

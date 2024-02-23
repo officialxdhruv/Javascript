@@ -58,8 +58,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: pink;
+  /* background-color: pink; */
 }
 .hide {
+  display: none;
+}
+.hidefor {
   display: none;
 }
