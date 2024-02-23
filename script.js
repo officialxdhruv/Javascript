@@ -21,7 +21,6 @@ box.forEach((boxes) => {
     if (turnO) {
       boxes.innerText = "O";
       turnO = false;
-      whoTurn.classList.remove("hidefor");
       whoTurn.innerText = "x";
     } else {
       boxes.innerText = "X";
@@ -57,8 +56,8 @@ const checkWinner = () => {
 //*show winner
 const showwinner = (post1) => {
   msg.innerText = `Winner is ${post1}`;
-  whoTurn.classList.add("hidefor");
   msgcont.classList.remove("hide");
+  whoTurn.innerText = "";
   disableButt();
 };
 //*Rest game
@@ -66,7 +65,7 @@ const restGame = () => {
   turnO = true;
   enableButt();
   msgcont.classList.add("hide");
-  whoTurn.classList.add("hidefor");
+  whoTurn.innerText = "Who's Turn";
 };
 resetbutt.addEventListener("click", restGame);
 
